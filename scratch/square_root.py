@@ -26,6 +26,26 @@ def square_root(in_put, precision):
         return step
 
 
+def square_root2(in_put, precision):
+    in_put = float(in_put)
+    precision = 1 / (10 ** float(precision))
+    if in_put < 0:
+        raise Exception("The square root of a negative number is non-real")
+    elif in_put == 0:
+        return 0
+    else:
+        guess = float(0)
+        test = in_put
+        error = test - guess ** 2
+        while abs(error) > precision:
+            print test
+            test = (test - guess) / 2
+            error = in_put - test ** 2
+            print error
+        return test
+
+
 if __name__ == "__main__":
     print square_root(4, 4)
+    print square_root2(100, 1)
     print square_root(10.9, 100)
